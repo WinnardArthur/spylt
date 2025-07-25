@@ -1,43 +1,41 @@
+import gsap from "gsap";
 import React, { useRef } from "react";
 import { flavorlists } from "../constants";
 import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
 import { useMediaQuery } from "react-responsive";
 
 const FlavorSlider = () => {
-  const sliderRef = useRef();
-
   const isTablet = useMediaQuery({ query: "(max-width: 1024px)" });
 
-  if (!isTablet)
-    useGSAP(() => {
-      const scrollAmount = sliderRef.current.scrollWidth - window.innerWidth;
+  const sliderRef = useRef();
 
-      if (!isTablet) {
-        const tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: ".flavor-section",
-            start: "2% top",
-            end: `+=${scrollAmount + 1500}px`,
-            scrub: true,
-            pin: true,
-          },
-        });
+  useGSAP(() => {
+    const scrollAmount = sliderRef.current.scrollWidth - window.innerWidth;
 
-        tl.to(".flavor-section", {
-          x: `-${scrollAmount + 1500}px`,
-          ease: "power1.inOut",
-        });
+    if (!isTablet) {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".flavor-section",
+          start: "2% top",
+          end: `+=${scrollAmount + 1500}px`,
+          scrub: true,
+          pin: true,
+        },
+      });
 
-        const titleTl = gsap.timeline({
-          scrollTrigger: {
-            trigger: ".flavor-section",
-            start: "top top",
-            end: "bottom 80%",
-            scrub: true,
-          },
-        });
-      }
+      tl.to(".flavor-section", {
+        x: `-${scrollAmount + 1500}px`,
+        ease: "power1.inOut",
+      });
+
+      const titleTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".flavor-section",
+          start: "top top",
+          end: "bottom 80%",
+          scrub: true,
+        },
+      });
 
       titleTl
         .to(".first-text-split", {
@@ -58,7 +56,8 @@ const FlavorSlider = () => {
           },
           "<"
         );
-    });
+    }
+  });
   return (
     <div className="slider-wrapper" ref={sliderRef}>
       <div className="flavors">

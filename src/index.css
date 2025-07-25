@@ -7,6 +7,7 @@
 }
 
 @theme {
+  --color-primary-color: #008A60;
   --color-black: #222123;
   --color-main-bg: #232224;
   --color-white: #ffffff;
@@ -169,7 +170,8 @@ body::-webkit-scrollbar {
     }
 
     .nutrition-text-scroll {
-      @apply rotate-[-3deg] border-[.5vw] border-[#e3d3bc] text-nowrap opacity-0 md:-mt-32 -mt-24;
+      /* @apply rotate-[-3deg] border-[.5vw] border-[#e3d3bc] text-nowrap opacity-50 md:-mt-32 -mt-24; */
+      @apply rotate-[-3deg] border-[.5vw] border-[#e3d3bc] text-nowrap opacity-0 md:-mt-8 -mt-24;
     }
 
     .nutrition-box {

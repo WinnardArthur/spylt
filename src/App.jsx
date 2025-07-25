@@ -7,6 +7,7 @@ import Hero from "./components/hero";
 import MessageBlock from "./components/message-block";
 import FlavorBlock from "./components/flavor-block";
 import { useGSAP } from "@gsap/react";
+import NutritionSecton from "./components/nutrition-section";
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
@@ -23,6 +24,7 @@ const App = () => {
           <Hero />
           <MessageBlock />
           <FlavorBlock />
+          <NutritionSecton />
           <div className="h-screen"></div>
         </div>
       </div>
