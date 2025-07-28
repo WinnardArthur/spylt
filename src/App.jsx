@@ -9,6 +9,7 @@ import FlavorBlock from "./components/flavor-block";
 import { useGSAP } from "@gsap/react";
 import NutritionSecton from "./components/nutrition-section";
 import BenefitSection from "./components/benefit-section";
+import Testimonial from "./components/testimonial";
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
@@ -26,7 +27,12 @@ const App = () => {
           <MessageBlock />
           <FlavorBlock />
           <NutritionSecton />
-          <BenefitSection />
+
+          <div>
+            <BenefitSection />
+            <Testimonial />
+          </div>
+          
           <div className="h-screen"></div>
         </div>
       </div>
