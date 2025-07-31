@@ -20,6 +20,7 @@ const VideoPin = () => {
       });
     }
   });
+
   return (
     <div className="vd-pin-section">
       <div
@@ -27,6 +28,7 @@ const VideoPin = () => {
           clipPath: isMobile
             ? "circle(100% at 50% 50%)"
             : "circle(6% at 50% 50%)",
+            willChange: "clip-path"
         }}
         className="size-full video-box"
       >
