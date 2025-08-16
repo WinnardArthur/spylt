@@ -1,5 +1,6 @@
 import { useGSAP } from "@gsap/react";
 import gsap, { SplitText, ScrollSmoother } from "gsap/all";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const MessageBlock = () => {
   useGSAP(() => {
@@ -40,6 +41,13 @@ const MessageBlock = () => {
       },
     });
 
+    let anim = gsap.to(".msg-text-scroll", {
+      clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+      ease: "circ.inOut",
+      duration: 1,
+      paused: true,
+    });
+
     gsap.to(".msg-text-scroll", {
       clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
       ease: "circ.inOut",
@@ -47,19 +55,29 @@ const MessageBlock = () => {
       scrollTrigger: {
         trigger: ".msg-text-scroll",
         start: "top 60%",
+        toggleActions: "play none none reverse",
       },
     });
 
-    gsap.from(paraSplit.lines, {
+    const paraAnim = gsap.from(paraSplit.lines, {
       stagger: 0.05,
       yPercent: 310,
       rotate: 3,
       ease: "power1.inOut",
       duration: 1,
-      scrollTrigger: {
-        trigger: ".message-content p",
-        start: "top 60%",
-      },
+      paused: true,
+    });
+
+    ScrollTrigger.create({
+      trigger: ".message-content p",
+      start: "top 70%",
+      onEnter: () => paraAnim.play(),
+    });
+
+    ScrollTrigger.create({
+      trigger: ".message-content p",
+      start: "top bottom",
+      onLeaveBack: () => paraAnim.pause(0),
     });
   });
 
